@@ -8,7 +8,8 @@ class BaseConstants:
     PROCESSED_FOLDER = BASE_FOLDER.joinpath("processed")
     RAW_FILE_EXTENSION = "html"
     TIME_SLEEP_SECONDS = 3
-    MAX_WORKERS = 6
+    MAX_WORKERS = 4
+    S3_BUCKET = "nba-data-stats"
 
 
 class LoggerConstants:
