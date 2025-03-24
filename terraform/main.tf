@@ -66,7 +66,9 @@ resource "aws_ecs_cluster" "nba_data_cluster" {
 
   configuration {
     execute_command_configuration {
-      cloud_watch_log_group_name = aws_cloudwatch_log_group.nba_data_log_group.name
+      log_configuration {
+        cloud_watch_log_group_name = aws_cloudwatch_log_group.nba_data_log_group.name
+      }
     }
   }
 }
