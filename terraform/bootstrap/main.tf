@@ -37,16 +37,3 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "terraform_state_e
     }
   }
 }
-
-# DynamoDB table for Terraform state looking.
-resource "aws_dynamodb_table" "terraform_state_lock" {
-  name           = var.terraform_state_lock_table
-  read_capacity  = 1
-  write_capacity = 1
-  hash_key       = "LockID"
-
-  attribute {
-    name = "LockID"
-    type = "S"
-  }
-}

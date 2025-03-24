@@ -7,11 +7,11 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "nba-data-terraform-state"
-    key            = "terraform.tfstate"
-    region         = "us-east-1"
-    encrypt        = true
-    dynamodb_table = "nba-data-terraform-state-lock"
+    bucket       = "nba-data-terraform-state"
+    key          = "terraform.tfstate"
+    region       = "us-east-1"
+    encrypt      = true
+    use_lockfile = true
   }
 }
 
@@ -66,6 +66,7 @@ resource "aws_ecs_cluster" "nba_data_cluster" {
 
   configuration {
     execute_command_configuration {
+      logging = "OVERRIDE"
       log_configuration {
         cloud_watch_log_group_name = aws_cloudwatch_log_group.nba_data_log_group.name
       }
@@ -267,6 +268,7 @@ resource "aws_iam_policy" "lambda_ecs_policy" {
         },
         {
           Action = ["iam:PassRole"]
+          Effect = "Allow"
           Resource = [
             aws_iam_role.ecs_task_execution_role.arn,
             aws_iam_role.ecs_task_role.arn
@@ -318,6 +320,6 @@ resource "aws_lambda_permission" "allow_eventbridge" {
   statement_id  = "AllowExecutionFromEventBridge"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.nba_data_trigger.function_name
-  principal     = "event.amazonaws.com"
+  principal     = "events.amazonaws.com"
   source_arn    = aws_cloudwatch_event_rule.nba_data_annual_trigger.arn
 }

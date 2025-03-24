@@ -9,9 +9,3 @@ variable "terraform_state_bucket" {
   type        = string
   default     = "nba-data-terraform-state"
 }
-
-variable "terraform_state_lock_table" {
-  description = "Name for the DynamoDB table for Terraform state locking"
-  type        = string
-  default     = "nba-data-terraform-state-lock"
-}
