@@ -306,8 +306,8 @@ resource "aws_security_group" "ecs_tasks" {
 # EventBridge rule for scheduled execution (one per year)
 resource "aws_cloudwatch_event_rule" "nba_data_annual_trigger" {
   name                = "nba-data-annual-trigger"
-  description         = "Trigger NBA data collection & extraction annually on February 1st"
-  schedule_expression = "cron(0 0 1 2 ? *)" # Run at midnight on February 1st
+  description         = "Trigger NBA data collection & extraction annually on May 1st"
+  schedule_expression = "cron(0 0 1 5 ? *)" # Run at midnight on May 1st
 }
 
 resource "aws_cloudwatch_event_target" "nba_data_lambda_target" {
