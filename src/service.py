@@ -349,7 +349,7 @@ def upload_extracted_conferences_stats(upl: Uploader) -> None:
         "has been started."
     )
 
-    base_folder = BaseConstants.RAW_FOLDER.joinpath(
+    base_folder = BaseConstants.PROCESSED_FOLDER.joinpath(
         ConferenceStatsConstants.CONFERENCES_STATS_FOLDER
     )
 
@@ -534,7 +534,7 @@ def upload_extracted_teams_stats(upl: Uploader) -> None:
         "been started."
     )
 
-    base_folder = BaseConstants.RAW_FOLDER.joinpath(
+    base_folder = BaseConstants.PROCESSED_FOLDER.joinpath(
         TeamStatsConstants.TEAMS_STATS_FOLDER
     )
 
@@ -704,7 +704,7 @@ def upload_extracted_players_stats(upl: Uploader) -> None:
         "started."
     )
 
-    base_folder = BaseConstants.RAW_FOLDER.joinpath(
+    base_folder = BaseConstants.PROCESSED_FOLDER.joinpath(
         PlayerStatsConstants.PLAYERS_STATS_FOLDER
     )
 

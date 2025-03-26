@@ -29,4 +29,5 @@ def init_logger(
 
     handler.setFormatter(fmt=formatter)
 
-    logger.addHandler(hdlr=handler)
+    if not logger.handlers:
+        logger.addHandler(hdlr=handler)
